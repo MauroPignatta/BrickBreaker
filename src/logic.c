@@ -1,4 +1,4 @@
-#include "player.h"
+#include "../lib/logic.h"
 
 ST_Ship initShip()
 {

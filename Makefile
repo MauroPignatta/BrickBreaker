@@ -1,10 +1,10 @@
 all: arkanoid
 
-SRC = src/table.c src/player.c src/Arkanoid.c
+SRC = src/table.c src/logic.c src/Arkanoid.c src/games.c
 
-LIB = lib/table.h lib/player.h
+LIB = lib/table.h lib/logic.h lib/games.h
 
-CFLAGS = -Ilib
+CFLAGS = -Ilib -pthread
 
 CC = gcc
 

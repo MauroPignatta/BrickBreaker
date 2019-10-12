@@ -24,4 +24,4 @@ typedef struct
 	ST_Ball initBall();
 
 
-#endif /* GRANDPARENT_H */
+#endif /* PLAYER_H */
