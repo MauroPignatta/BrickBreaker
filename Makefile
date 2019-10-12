@@ -1,4 +1,12 @@
 all: arkanoid
 
-arkanoid: table.h player.h table.c player.c Arkanoid.c
-	gcc -o arkanoid table.c player.c Arkanoid.c
+SRC = src/table.c src/player.c src/Arkanoid.c
+
+LIB = lib/table.h lib/player.h
+
+CFLAGS = -Ilib
+
+CC = gcc
+
+arkanoid: $(LIB) $(SRC)
+	$(CC) $(CFLAGS) -o arkanoid $(SRC)
