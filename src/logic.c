@@ -128,17 +128,18 @@ int brickDestoyed(ST_Ball ball,char Table[MaxY][MaxX] )
 			{
 				brickSIDE = Table[i][j - 1];
 				Table[i][j - 1] = ' ';
-				Table[i][j - 2] = ' ';
+				if(Table[i][j - 2] != '#')
+					Table[i][j - 2] = ' ';
 			}
 			else 
 			{
 				brickSIDE = Table[i][j + 1];
 				Table[i][j + 1] = ' ';
-				Table[i][j + 1] = ' ';
+				if(Table[i][j + 2] != '#')
+					Table[i][j + 2] = ' ';
 			}
 		}
 		hitbrick = 1;
 	}
-
 	return hitbrick;
 }

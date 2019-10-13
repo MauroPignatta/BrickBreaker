@@ -6,7 +6,7 @@
 #include <ctype.h> //tolower
 
 #define MaxY 30
-#define MaxX 30
+#define MaxX 40
 #define LEFT 'a'
 #define RIGHT 'd'
 

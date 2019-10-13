@@ -39,7 +39,7 @@ int main(int argc, char ** argv)
 	while (ball.posY != MaxY - 1)
 	{
 		shipMovement(&ship, &Movement);
-		if (tick == 2)
+		if (tick == 3)
 		{
 			tick = 0;
 			ballMovement(&ball);
