@@ -9,4 +9,4 @@ CFLAGS = -Ilib -pthread
 CC = gcc
 
 arkanoid: $(LIB) $(SRC)
-	$(CC) $(CFLAGS) -o arkanoid $(SRC)
+	$(CC) $(CFLAGS) -o bin/arkanoid $(SRC)
