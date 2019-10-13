@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <ctype.h> //tolower
 
-#define MaxY 40
-#define MaxX 50
+#define MaxY 30
+#define MaxX 30
 #define LEFT 'a'
 #define RIGHT 'd'
 
@@ -28,22 +28,18 @@ typedef struct
 	int posY;
 }ST_Ball;
 
-typedef struct 
-{
-	int letter;
-	int size;
-	int posX;
-	int posY;
-}ST_Brick;
-
 	ST_Ship initShip();
 
 	ST_Ball initBall();
 
 	void shipMovement(ST_Ship *ship, char *direction);
 
-	void ballMovement (ST_Ball *ball);
+	void ballMovement(ST_Ball *ball);
 
 	void hitboxBall(ST_Ball *ball, char Table[MaxY][MaxX]);
+
+	int brickDestoyed(ST_Ball ball,char Table[MaxY][MaxX] );
+
+
 
 #endif /* PLAYER_H */

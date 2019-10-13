@@ -3,7 +3,7 @@
 ST_Ship initShip()
 {
 	ST_Ship ship;
-	ship.len = 8;
+	ship.len = 6;
 	ship.letter = '@';
 	ship.posX = MaxX/2 - ship.len/2;
 	ship.posY = MaxY - 3;
@@ -102,5 +102,43 @@ void ballMovement (ST_Ball *ball)
 			ball->posY ++;
 			break;
 	}
+}
 
+int brickDestoyed(ST_Ball ball,char Table[MaxY][MaxX] )
+{
+	int i = ball.posY;
+	int j = ball.posX;
+	char brickUP;
+	char brickSIDE;
+	int hitbrick = 0;
+	if (Table[i - 1][j] != ' ' && Table[i - 1][j] != '#' && Table[i - 1][j] != '@')
+	{
+		if(Table[i - 1][j] == '+' || Table[i - 1][j] == '*')
+		{
+			brickUP = Table[i - 1][j];
+			Table[i - 1][j] = ' ';
+			if(Table[i - 1][j + 1] == brickUP)
+				Table[i - 1][j + 1] = ' ';
+			else
+				Table[i - 1][j - 1] = ' ';
+		}
+		if(Table[i][j + 1] == '*' || Table[i][j + 1] == '+' || Table[i][j - 1] == '*' || Table[i][j - 1] == '+')
+		{
+			if (Table[i][j - 1] == '*' || Table[i][j - 1] == '+')
+			{
+				brickSIDE = Table[i][j - 1];
+				Table[i][j - 1] = ' ';
+				Table[i][j - 2] = ' ';
+			}
+			else 
+			{
+				brickSIDE = Table[i][j + 1];
+				Table[i][j + 1] = ' ';
+				Table[i][j + 1] = ' ';
+			}
+		}
+		hitbrick = 1;
+	}
+
+	return hitbrick;
 }

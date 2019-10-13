@@ -1,6 +1,6 @@
 all: arkanoid
 
-SRC = src/table.c src/logic.c src/Arkanoid.c src/games.c
+SRC = src/table.c src/logic.c src/games.c src/Arkanoid.c
 
 LIB = lib/table.h lib/logic.h lib/games.h
 

@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include "logic.h"
 
-	void initTable( char Table[MaxY][MaxX] , ST_Ship ship, ST_Ball ball);
+	void initTable(char Table[MaxY][MaxX] , ST_Ship ship, ST_Ball ball);
+
+	void refreshTable(char Table[MaxY][MaxX] , ST_Ship ship, ST_Ball ball);
 
 	void Draw( char Table[MaxY][MaxX] );
 	

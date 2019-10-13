@@ -8,7 +8,7 @@
 
 char Movement = ' ';
 
-void shipMove()
+void getInput()
 {
 	while(1)
 	{
@@ -22,9 +22,9 @@ void shipMove()
 int main(int argc, char ** argv)
 {
 	pthread_t MovementThread;
-	pthread_create(&MovementThread, NULL,(void *) shipMove, NULL);
+	pthread_create(&MovementThread, NULL,(void *) getInput, NULL);
 
-	system("clear");
+	clearScreen;
 
 	char Table[MaxY][MaxX];
 	ST_Ship ship = initShip();
@@ -32,23 +32,28 @@ int main(int argc, char ** argv)
 
 	initTable(Table, ship, ball);
 	Draw(Table);
+
 	int tick = 0;
-	while (1)
+	int score = 0;
+	while (ball.posY != MaxY - 1)
 	{
 		shipMovement(&ship, &Movement);
-		if (tick == 1)
+		if (tick == 2)
 		{
 			tick = 0;
 			ballMovement(&ball);
 			hitboxBall(&ball, Table);
+			if(brickDestoyed(ball, Table))
+				score += 100;
 		}
-		initTable(Table, ship, ball);
-		Sleep(75);
+		refreshTable(Table, ship, ball);
+		Sleep(25);
 		clearScreen;
 		Draw(Table);
 		tick++;
+		printf("\nScore: %d\n", score);
 	}
-
+	printf("You Lost\n");
 	pthread_join(MovementThread, NULL);
 	return 0;
 }
