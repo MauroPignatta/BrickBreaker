@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <pthread.h>
+#include <unistd.h>
 #include "../lib/games.h"
 #include "../lib/table.h"
 #include "../lib/logic.h"
@@ -47,7 +48,7 @@ int main(int argc, char ** argv)
 				score += 100;
 		}
 		refreshTable(Table, ship, ball);
-		Sleep(25);
+		usleep(25*1000);
 		clearScreen;
 		Draw(Table);
 		tick++;
