@@ -36,13 +36,14 @@ int main(int argc, char ** argv)
 	while (1)
 	{
 		shipMovement(&ship, &Movement);
-		if (tick == 2)
+		if (tick == 1)
 		{
 			tick = 0;
 			ballMovement(&ball);
+			hitboxBall(&ball, Table);
 		}
 		initTable(Table, ship, ball);
-		Sleep(100);
+		Sleep(75);
 		clearScreen;
 		Draw(Table);
 		tick++;

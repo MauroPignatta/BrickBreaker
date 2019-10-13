@@ -5,9 +5,12 @@
 #include <stdlib.h>
 #include <ctype.h> //tolower
 
+#define MaxY 15
+#define MaxX 25
 #define LEFT 'a'
 #define RIGHT 'd'
-typedef enum BALL_DIRECTION{ NE , NW , SW, SE}BALL_DIR;
+
+typedef enum BALL_DIRECTION{NE , NW , SE, SW}BALL_DIR;
 
 typedef struct
 {
@@ -32,5 +35,7 @@ typedef struct
 	void shipMovement(ST_Ship *ship, char *direction);
 
 	void ballMovement (ST_Ball *ball);
+
+	void hitboxBall(ST_Ball *ball, char Table[MaxY][MaxX]);
 
 #endif /* PLAYER_H */
