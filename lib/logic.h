@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <ctype.h> //tolower
 
-#define MaxY 15
-#define MaxX 25
+#define MaxY 40
+#define MaxX 50
 #define LEFT 'a'
 #define RIGHT 'd'
 
