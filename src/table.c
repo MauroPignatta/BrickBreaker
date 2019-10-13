@@ -7,7 +7,7 @@ void initTable(char Table[MaxY][MaxX], ST_Ship ship, ST_Ball ball)
 	{
 		for(int j = 0; j < MaxX; j ++)
 		{
-			if (i == 0 || i == MaxY -1)
+			if (i == 0)
 				Table[i][j] = '#';
 			else if(j == 0 || j == MaxX -1)
 				Table[i][j] = '#';

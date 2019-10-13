@@ -5,8 +5,8 @@ ST_Ship initShip()
 	ST_Ship ship;
 	ship.len = 8;
 	ship.letter = '@';
-	ship.posX = 21;
-	ship.posY = 37;
+	ship.posX = MaxX/2 - ship.len/2;
+	ship.posY = MaxY - 3;
 	return ship;
 }
 
@@ -14,9 +14,9 @@ ST_Ball initBall()
 {
 	ST_Ball ball;
 	ball.letter = 'o';
-	ball.direction = NW;
-	ball.posY = 36;
-	ball.posX = 25;
+	ball.direction = NE;
+	ball.posY = MaxY - 4;
+	ball.posX = MaxX/2;
 	return ball;
 }
 
@@ -32,7 +32,7 @@ void shipMovement(ST_Ship *ship, char *direction)
 	}
 	if (*direction == RIGHT)
 	{
-		if(ship->posX < 50 - ship->len -1)
+		if(ship->posX < MaxX - ship->len -1)
 		{
 			ship->posX ++ ;
 		}
@@ -40,9 +40,45 @@ void shipMovement(ST_Ship *ship, char *direction)
 	*direction = ' ';
 }
 
-void hitboxBall(ST_Ball *ball)
+void hitboxBall(ST_Ball *ball, char Table[MaxY][MaxX])
 {
-
+	int i = ball->posY;
+	int j = ball->posX;
+	switch (ball->direction)
+	{
+		case NE:
+			if (Table[i][j + 1] != ' ' && Table[i - 1][j] != ' ')  // choca justo en una esquina
+				ball->direction = SE;
+			else if ( Table[i - 1][j]  != ' ')  //choca con algo arriba
+				ball->direction = SW;
+			else if (Table[i][j + 1] != ' ')   //choca con algo a los lados
+				ball->direction = NW;
+			break;
+		case NW:
+			if (Table[i][j - 1] != ' ' && Table[i - 1][j] != ' ')  // choca justo en una esquina
+				ball->direction = SW;
+			else if ( Table[i - 1][j] != ' ')  //choca con algo arriba
+				ball->direction = SE;
+			else if (Table[i][j - 1] != ' ')   //choca con algo a los lados
+				ball->direction = NE;
+			break;
+		case SW:
+			if (Table[i][j + 1] != ' ' && Table[i + 1][j] != ' ')  // choca justo en una esquina
+				ball->direction = NW;
+			else if ( Table[i + 1][j] != ' ')  //choca con algo arriba
+				ball->direction = NE;
+			else if (Table[i][j + 1] != ' ')   //choca con algo a los lados
+				ball->direction = SE;
+			break;
+		case SE:
+			if (Table[i][j - 1] != ' ' && Table[i + 1][j] != ' ')  // choca justo en una esquina
+				ball->direction = NE;
+			else if (Table[i + 1][j] != ' ')  //choca con algo arriba
+				ball->direction = NW;
+			else if (Table[i][j - 1] != ' ')   //choca con algo a los lados
+				ball->direction = SW;
+			break;
+	}
 }
 
 void ballMovement (ST_Ball *ball)
@@ -66,4 +102,5 @@ void ballMovement (ST_Ball *ball)
 			ball->posY ++;
 			break;
 	}
+
 }
