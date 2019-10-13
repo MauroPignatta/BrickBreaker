@@ -19,6 +19,14 @@ typedef struct
 	int posY;
 }ST_Ball;
 
+typedef struct 
+{
+	int letter;
+	int size;
+	int posX;
+	int posY;
+}ST_Brick;
+
 	ST_Ship initShip();
 
 	ST_Ball initBall();
