@@ -3,6 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h> //tolower
+
+#define LEFT 'a'
+#define RIGHT 'd'
+typedef enum BALL_DIRECTION{ NE , NW , SW, SE}BALL_DIR;
 
 typedef struct
 {
@@ -15,6 +20,7 @@ typedef struct
 typedef struct
 {
 	char letter;
+	BALL_DIR direction;
 	int posX;
 	int posY;
 }ST_Ball;
@@ -23,5 +29,8 @@ typedef struct
 
 	ST_Ball initBall();
 
+	void shipMovement(ST_Ship *ship, char *direction);
+
+	void ballMovement (ST_Ball *ball);
 
 #endif /* PLAYER_H */

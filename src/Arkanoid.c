@@ -25,38 +25,28 @@ int main(int argc, char ** argv)
 	pthread_create(&MovementThread, NULL,(void *) shipMove, NULL);
 
 	system("clear");
-	printf("Arkanoid Game\n");
 
 	char Table[MaxY][MaxX];
 	ST_Ship ship = initShip();
+	ST_Ball ball = initBall();
 
-	initTable(Table, ship);
+	initTable(Table, ship, ball);
 	Draw(Table);
-
+	int tick = 0;
 	while (1)
 	{
-		if (Movement == 'a' || Movement == 'A')
+		shipMovement(&ship, &Movement);
+		if (tick == 2)
 		{
-			if(ship.posX > 1)
-			{
-				ship.posX -- ;
-			}
+			tick = 0;
+			ballMovement(&ball);
 		}
-		if (Movement == 'd' || Movement == 'D')
-		{
-			if(ship.posX < MaxX - ship.len -1)
-			{
-				ship.posX ++ ;
-			}
-		}
-		Movement = ' ';
-		refreshTable(Table, ship);
+		initTable(Table, ship, ball);
 		Sleep(100);
 		clearScreen;
 		Draw(Table);
+		tick++;
 	}
-	
-
 
 	pthread_join(MovementThread, NULL);
 	return 0;
