@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h> //tolower
+#include <time.h> //time
 
 #define MaxY 30
-#define MaxX 40
+#define MaxX 41
 #define LEFT 'a'
 #define RIGHT 'd'
 

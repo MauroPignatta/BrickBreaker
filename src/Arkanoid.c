@@ -39,7 +39,7 @@ int main(int argc, char ** argv)
 	while (ball.posY != MaxY - 1)
 	{
 		shipMovement(&ship, &Movement);
-		if (tick == 3)
+		if (tick == 2)
 		{
 			tick = 0;
 			ballMovement(&ball);
@@ -48,7 +48,7 @@ int main(int argc, char ** argv)
 				score += 100;
 		}
 		refreshTable(Table, ship, ball);
-		usleep(25*1000);
+		usleep(40*1000);
 		clearScreen;
 		Draw(Table);
 		tick++;

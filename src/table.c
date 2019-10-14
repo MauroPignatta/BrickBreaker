@@ -18,17 +18,17 @@ void initTable(char Table[MaxY][MaxX], ST_Ship ship, ST_Ball ball)
 				if(changeBrick)
 				{
 					brick = '+';
+					Table[i][j++] = brick;
+					Table[i][j++] = brick;
 					Table[i][j] = brick;
-					Table[i][j+1] = brick;
-					j++;
 					changeBrick = 0;
 				}
 				else 
 				{
 					brick = '*';
+					Table[i][j++] = brick;
+					Table[i][j++] = brick;
 					Table[i][j] = brick;
-					Table[i][j+1] = brick;
-					j++;
 					changeBrick = 1;
 				}
 			}

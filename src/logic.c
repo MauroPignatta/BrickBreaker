@@ -12,9 +12,10 @@ ST_Ship initShip()
 
 ST_Ball initBall()
 {
+	srand(time(NULL));
 	ST_Ball ball;
 	ball.letter = 'o';
-	ball.direction = NE;
+	ball.direction = rand() % 2;
 	ball.posY = MaxY - 4;
 	ball.posX = MaxX/2;
 	return ball;
@@ -119,8 +120,12 @@ int brickDestoyed(ST_Ball ball,char Table[MaxY][MaxX] )
 			Table[i - 1][j] = ' ';
 			if(Table[i - 1][j + 1] == brickUP)
 				Table[i - 1][j + 1] = ' ';
-			else
+			if(Table[i - 1][j + 2] == brickUP)
+				Table[i - 1][j + 2] = ' ';
+			if(Table[i - 1][j - 1] == brickUP)
 				Table[i - 1][j - 1] = ' ';
+			if(Table[i - 1][j - 2] == brickUP)
+				Table[i - 1][j - 2] = ' ';
 		}
 		if(Table[i][j + 1] == '*' || Table[i][j + 1] == '+' || Table[i][j - 1] == '*' || Table[i][j - 1] == '+')
 		{
@@ -130,6 +135,8 @@ int brickDestoyed(ST_Ball ball,char Table[MaxY][MaxX] )
 				Table[i][j - 1] = ' ';
 				if(Table[i][j - 2] != '#')
 					Table[i][j - 2] = ' ';
+				if(Table[i][j - 3] != '#')
+					Table[i][j - 3] = ' ';
 			}
 			else 
 			{
@@ -137,6 +144,8 @@ int brickDestoyed(ST_Ball ball,char Table[MaxY][MaxX] )
 				Table[i][j + 1] = ' ';
 				if(Table[i][j + 2] != '#')
 					Table[i][j + 2] = ' ';
+				if(Table[i][j + 3] != '#')
+					Table[i][j + 3] = ' ';
 			}
 		}
 		hitbrick = 1;
